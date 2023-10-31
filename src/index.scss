@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap');
+
+$main-color:#253758; 
+$secondary-color: #0077ff;
+
+@mixin center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin input-button{
+  border: 1px solid transparent;
+  border-radius: .45rem;
+  padding: .25rem .5rem;
+  outline: none;
+  transition: all .3s;
+  font-weight: 600;
+}
+
+@mixin hover{
+  cursor: pointer;
+  filter: brightness(1.1)
+}
+
+@mixin active{
+  transform: scale(.92)
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lora', serif;
+}
+
+body {
+  @include center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(127deg, $secondary-color, $main-color);
+
+  #container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 30rem;
+    width: 25rem;
+    padding: .5rem 2rem;
+    background-color: $main-color;
+    border: 1px solid $main-color;
+    border-radius: .45rem;
+
+    h1{
+      font-size: 1.8rem;
+      color: #efefef;
+    }
+
+    form{
+      @include center;
+      width: 100%;
+      gap: .85rem;
+
+      input{
+        width: 100%;
+        @include input-button;
+      }
+      
+      button{
+        @include input-button;
+        background-color: #0077ff;
+        color: #efefef;
+
+        &:hover{
+          @include hover;
+        }
+        &:active{
+          @include active;
+        }
+      }
+    }
+    ul{
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+      width: 100%;
+      height: 100%;
+      list-style: none;
+      margin-top: 1rem;
+      width: 100%;
+      overflow-y: auto;
+
+      li{
+        display: flex;
+        align-items: center;
+        gap: .4rem;
+        background-color: #354768;
+        padding: .3rem .6rem;
+        border: 1px solid transparent;
+        border-radius: .45rem;
+        color: #efefef;
+        
+        span{
+          width: 100%;
+        }
+        button{
+          background: transparent;
+          border: none;
+          color: #f55;
+          display: flex;
+          align-items: center;
+
+          &:hover{
+            @include hover;
+          }
+
+          &:active{
+            @include active;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+    body{
+      #container{
+        height: 25rem;
+        width: 20rem;
+      }
+    }
+}
+@media screen and (max-width: 600px) {
+    body{
+      #container{
+        height: 20rem;
+        width: 15rem;
+        
+        h1{
+          font-size: 1.5rem;
+        }
+
+        form{
+          flex-direction: column;
+          align-items: end;
+          gap: .5rem;
+
+          input{
+            font-size: .65rem;
+          }
+          button{
+            font-size: .65rem;
+          }
+        }
+        
+        ul{
+          li{
+            span{
+              font-size: .65rem;
+            }
+          }
+        }
+      }
+    }
+}
